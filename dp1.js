@@ -66,3 +66,45 @@ function getCoins (coins, amount) {
 
     如果你已经实现复杂度为 O(n) 的解法，尝试使用更为精妙的分治法求解。
 */
+
+// 首先搭眼一瞄 又是个最值问题，接下来看
+// 1. 是否可以分解？  首先连续子数组的和结束位置假设为n, 最大和为f(n)
+//    那么在数组Array[n] 为正时, f(n) = f(n-1) + Array[n]
+//    否则f(n) === f(n-1),因为我们在求最大和所以使用Max函数
+// 2. 子问题独立吗？  每个元素都独立的所以子问题独立
+// 3. 有base case吗？ 假如数组为空时,那么最大和为0 所以base case为 f(0) = 0
+// 其实我们是因为有了base case来推算分解方式的
+// 整体思路也就是，把每个数组的元素作为子数组的结束元素，并得出每种情况下的最大值，最后进行max计算
+function getSubArrayMaxSum (arr) {
+    if (!arr.length) return 0
+    let dp = new Array(arr.length).fill(-Infinity)
+    dp[0] = arr[0]
+    for (let i = 1, l = arr.length; i < l; i++) {
+        // 核心思想： dp[i]值可以由dp[i-1] 和 arr[i] 推导得出
+        // 取前序子数组&当前元素加和 与 当前元素其中的最大一个就可以
+        dp[i] = Math.max(arr[i], dp[i-1] + arr[i])
+    }
+    console.log(dp)
+    return Math.max(...dp)
+}
+console.log(getSubArrayMaxSum([-2,1,-3,4,-1,2,1,-5,4]))
+
+
+// 另一种方式
+// 思路： 贪心算法 遍历数组，判断每次循环中的sum对后续加和是否有增益
+// 如果出现sum < 0, 则sum = 当前遍历值v，否则sum += v, 并取的每次循环中的sum最大值
+
+function getSubArrayMaxSum2 (arr) {
+  let sum = -Infinity, res = -Infinity
+  arr.forEach(v => {
+      if (sum >= 0) {
+          sum += v
+      } else {
+          sum = v
+      }
+      res = Math.max(sum, res)
+  });
+  return res
+}
+
+console.log(getSubArrayMaxSum2([-2,1,-3,4,-1,2,1,-5,4]))
