@@ -1,0 +1,35 @@
+{
+    "common": {
+        "lng": 116.2276409551928,
+        "lat": 40.06666170580732,
+        "ticket": "2ulVgNm7KhQiP9q46WI633OT_t0Jhdo-dTgCQDbGyMYszD2OwkAMgNG7fO1akT2OZzMuOQI3IBB-mkEKoopydwqoXvc2upL4oIMidCNN6IUMVS9Cd1KFPn4JksMR4USCMJNe2-hVS7N_q9qEC1lCWMiN1_O9npfftgtX0qJNHpO1KtxI_iJU1ara6BrzinAnMYQHqfsnAAD__w==",
+        "terminal_id": 300106,
+        "app_version": "1.2.40",
+        "product_id": 510,
+        "biz_type": 601,
+        "lang": "en-US",
+        "city_id": 55000116,
+        "location_cityid": 55000116,
+        "location_country": "BR",
+        "networkType": "Wifi",
+        "client_type": 8,
+        "datatype": "13",
+        "data_type": "13",
+        "mobileType": "iPhone 8",
+        "platform_type": 1,
+        "device_info": {
+            "suuid": "5b6d6e1870437b395cf55073a2e637b5",
+            "imei": "5b6d6e1870437b395cf55073a2e637b5",
+            "deviceid": "5b6d6e1870437b395cf55073a2e637b5",
+            "osType": "1",
+            "osVersion": "11.399999618530273"
+        }
+    },
+    "abilities": {
+        "ibt_safety_bgc_pax/cpf_risk": {
+            "CPFClientFromType": 3,
+            "birthday": "1994-02-01",
+            "id_no": "15930221740"
+        }
+    }
+}
