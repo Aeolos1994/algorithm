@@ -108,3 +108,35 @@ function getSubArrayMaxSum2 (arr) {
 }
 
 console.log(getSubArrayMaxSum2([-2,1,-3,4,-1,2,1,-5,4]))
+
+
+// 在n个物品中挑选若干物品装入背包，最多能装多满？假设背包的大小为m，每个物品的大小为A[i]。
+
+// 你不可以将物品进行切割。
+// 在线评测地址：LintCode 领扣
+
+// 样例 1:
+// 	输入:  [3,4,8,5], backpack size=10
+// 	输出:  9
+
+
+// 样例 2:
+// 	输入:  [2,3,5,7], backpack size=12
+// 	输出:  12
+
+// 首先假定bagSize是一个定值
+// 这时题目就和凑硬币类似了
+// 我们要找的不是dp[i] 与 dp[i-1]的关系
+// 而是 dp[i] 与dp[i - ths[j]]的关系，也就是下标diff为物品的大小
+function getMostFull (ths, bagSize) {
+  let dp = Array(bagSize + 1).fill(0)
+  for(let i = 1; i <= bagSize; i++) {
+    for (let j = 0; j < ths.length; j++) {
+      if (ths[j] > i) {
+        continue
+      }
+      dp[i] = Math.max(dp[i], dp[i-ths[j]] + ths[j])
+    }
+  }
+  return dp[bagSize]
+}
